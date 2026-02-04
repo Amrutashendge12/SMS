@@ -1,0 +1,63 @@
+/* ===== SIDEBAR ===== */
+.sidebar {
+    background-color: #212529;
+}
+
+.sidebar strong {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+details summary {
+    cursor: pointer;
+    list-style: none;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 6px 0;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #d1d1d1;
+    display: block;
+    font-size: 14px;
+    padding: 4px 0;
+}
+
+.sidebar a:hover,
+details summary:hover {
+    color: #ffffff;
+    padding-left: 6px;
+    transition: 0.2s;
+}
+
+details a {
+    margin-left: 16px;
+}
+/* ===== MOBILE SIDEBAR ===== */
+@media (max-width: 768px) {
+
+    #sidebar {
+        position: fixed;
+        top: 56px; /* navbar height */
+        left: -260px;
+        width: 260px;
+        height: 100%;
+        z-index: 1050;
+        transition: left 0.3s ease;
+    }
+
+    #sidebar.active {
+        left: 0;
+    }
+}
+details a {
+    display: block;
+    margin-left: 15px;
+    text-decoration: none;
+}

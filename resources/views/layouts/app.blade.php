@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ ucfirst(auth()->user()->role) }} Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{-- Bootstrap CSS --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    {{-- Admin Custom CSS --}}
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+</head>
+
+<body class="bg-light">
+
+{{-- ================= TOP NAVBAR ================= --}}
+<nav class="navbar navbar-dark bg-dark px-3">
+    <button class="btn btn-outline-light d-md-none me-2"
+        onclick="toggleSidebar()">
+        ☰
+    </button>
+
+    <span class="navbar-brand">Society Management System</span>
+
+    {{-- Admin Dropdown --}}
+    <div class="dropdown">
+        <a class="text-white dropdown-toggle text-decoration-none"
+           href="#"
+           role="button"
+           data-bs-toggle="dropdown">
+            {{ auth()->user()->name }} ({{ auth()->user()->role }})
+        </a>
+
+        <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+                <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                    ✏️ Edit Profile
+                </a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+                    <form id="logout-form" method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="button"
+                            class="dropdown-item text-danger"
+                            onclick="confirmLogout()">
+                            🚪 Logout
+                        </button>
+                    </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+
+        {{-- ================= SIDEBAR ================= --}}
+        <div id="sidebar"class="col-md-2 sidebar text-white min-vh-100 p-3">
+
+            <button class="btn btn-sm btn-light d-md-none mb-3"
+                onclick="toggleSidebar()">
+                ✖ Close
+            </button>
+
+            @if(auth()->user()->role === 'admin')
+                <strong>Admin</strong>
+                <hr class="text-secondary">
+
+                <a href="{{ route('admin.dashboard') }}" class="fw-bold mb-2">
+                    Dashboard
+                </a>
+
+                <details class="mb-2">
+                    <summary>Society</summary>
+                    <a href="{{ route('admin.society.index') }}">View Society</a>
+                    <a href="{{ route('admin.society.create') }}">+ Add Society</a>
+                </details>
+
+                <details class="mb-2">
+                    <summary>Phase</summary>
+                    <a href="{{ route('admin.phase.index') }}">View Phase</a>
+                    <a href="{{ route('admin.phase.create') }}">+ Add Phase</a>
+                </details>
+
+                <details class="mb-2">
+                    <summary>Wing</summary>
+                    <a href="{{ route('admin.wing.index') }}">View Wing</a>
+                    <a href="{{ route('admin.wing.create') }}">+ Add Wing</a>
+                </details>
+
+                <details class="mb-2">
+                    <summary>Flat</summary>
+                    <a href="{{ route('admin.flat.index') }}">View Flat</a>
+                    <a href="{{ route('admin.flat.create') }}">+ Add Flat</a>
+                </details>
+
+                <details class="mb-2">
+                    <summary>Owner</summary>
+                    <a href="{{ route('admin.member.index') }}">View Owners</a>
+                    <a href="{{ route('admin.member.create') }}">+ Add Owner</a>
+                </details>
+
+            @endif
+
+            @if(auth()->user()->role === 'owner')
+                <a href="{{ route('owner.dashboard') }}">Owner Dashboard</a>
+            @endif
+
+            @if(auth()->user()->role === 'security')
+                <a href="{{ route('security.dashboard') }}">Security Dashboard</a>
+            @endif
+
+        </div>
+
+        {{-- ================= MAIN CONTENT ================= --}}
+        <div class="col-md-10 p-4">
+            @yield('content')
+        </div>
+
+    </div>
+</div>
+
+{{-- Bootstrap JS (Dropdown required) --}}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    function confirmLogout() {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You will be logged out!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, Logout',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('logout-form').submit();
+            }
+        });
+    }
+</script>
+
+<script>
+    function toggleSidebar() {
+        document.getElementById('sidebar')
+                .classList.toggle('active');
+    }
+</script>
+
+@if(session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: "{{ session('success') }}",
+        timer: 2000,
+        showConfirmButton: false
+    });
+</script>
+
+
+@endif
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const form = this.closest('.delete-form');
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This owner will be deleted!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
+});
+</script>
+
+</body>
+</html>
