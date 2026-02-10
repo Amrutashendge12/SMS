@@ -12,6 +12,13 @@ class Society extends Model
         'address',
         'city',
         'pincode',
+         'owner_id'
     ];
+public function phases()
+{
+    return $this->hasMany(\App\Models\Phase::class);
+}
+
+
 }
 

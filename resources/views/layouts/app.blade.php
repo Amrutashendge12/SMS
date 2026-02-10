@@ -102,15 +102,124 @@
                     <a href="{{ route('admin.member.create') }}">+ Add Owner</a>
                 </details>
 
+                <details class="mb-2 sidebar-details">
+                    <summary class="sidebar-summary">🛡️ Security</summary>
+                    <div class="sidebar-submenu">
+                        <a href="{{ route('admin.securities.index') }}" class="sidebar-link">View Security</a>
+                        <a href="{{ route('admin.securities.create') }}" class="sidebar-link"> + Add Security</a>
+                    </div>
+                </details>
+
+
             @endif
 
             @if(auth()->user()->role === 'owner')
-                <a href="{{ route('owner.dashboard') }}">Owner Dashboard</a>
+                 <strong>Owner</strong>
+
+                <hr class="text-secondary">
+                 <a href="{{ route('owner.dashboard') }}" class="fw-bold mb-2">
+                    Dashboard
+                </a>
+
+                 <details class="mb-2">
+                    <summary>Society</summary>
+                    <a href="{{ route('owner.societies.index') }}">View Societies</a>
+                </details>
+
+                <details class="mb-2">
+                    <summary>Phase</summary>
+                        <a href="{{ route('owner.phases.index') }}">View Phases</a>
+                </details>
+
+                <details class="mb-2">
+                    <summary>Wing</summary>
+                        <a href="{{ route('owner.wings.index') }}">View Wings</a>
+                </details>
+
+                <details class="mb-2">
+                    <summary>Flat</summary>
+                    <a href="{{ route('owner.flats.index') }}">View Flats</a>
+                </details>
+
+    
+                <details class="mb-2 sidebar-details">
+                    <summary class="sidebar-summary">Security</summary>
+                        <div class="sidebar-submenu">
+                            <a href="{{ route('owner.securities.index') }}" class="sidebar-link">View Security</a>
+                        </div>
+                </details>
             @endif
 
-            @if(auth()->user()->role === 'security')
-                <a href="{{ route('security.dashboard') }}">Security Dashboard</a>
-            @endif
+@if(auth()->user()->role === 'security')
+
+    <strong>Security Panel</strong>
+    <hr class="text-secondary">
+
+    {{-- Dashboard --}}
+    <a href="{{ route('security.dashboard') }}" class="fw-bold mb-2 d-block">
+        Dashboard
+    </a>
+
+    {{-- Attendance --}}
+    <details class="mb-2">
+        <summary>Attendance</summary>
+        <a href="{{ route('security.attendance.index') }}">View Attendance</a>
+        <a href="{{ route('security.attendance.create') }}">+ Mark Attendance</a>
+    </details>
+
+    {{-- View Data --}}
+    <details class="mb-2">
+        <summary>Society</summary>
+        <a href="{{ route('security.societies.index') }}">View Societies</a>
+    </details>
+
+    <details class="mb-2">
+        <summary>Phase</summary>
+        <a href="{{ route('security.phases.index') }}">View Phases</a>
+    </details>
+
+    <details class="mb-2">
+        <summary>Wing</summary>
+        <a href="{{ route('security.wings.index') }}">View Wings</a>
+    </details>
+
+    <details class="mb-2">
+        <summary>Flat</summary>
+        <a href="{{ route('security.flats.index') }}">View Flats</a>
+    </details>
+
+    <details class="mb-2">
+        <summary>Owner</summary>
+        <a href="{{ route('security.owners.index') }}">View Owners</a>
+    </details>
+
+    {{-- Profile --}}
+    <details class="mb-2">
+        <summary>My Profile</summary>
+        <a href="{{ route('profile.edit') }}">Edit Profile</a>
+    </details>
+
+@endif
+
+<details class="mb-2">
+    <summary>Events</summary>
+
+    {{-- Admin --}}
+    @if(auth()->user()->role === 'admin')
+        <a href="{{ route('admin.events.index') }}">View Events</a>
+        <a href="{{ route('admin.events.create') }}">+ Add Event</a>
+
+    {{-- Owner --}}
+    @elseif(auth()->user()->role === 'owner')
+        <a href="{{ route('owner.events.index') }}">View Events</a>
+        <a href="{{ route('owner.events.create') }}">+ Add Event</a>
+
+    {{-- Security --}}
+    @elseif(auth()->user()->role === 'security')
+        <a href="{{ route('security.events.index') }}">View Events</a>
+    @endif
+</details>
+
 
         </div>
 
@@ -192,6 +301,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
 </html>

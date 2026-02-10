@@ -10,6 +10,6 @@ class Phase extends Model
 
     public function society()
     {
-        return $this->belongsTo(Society::class);
+        return $this->belongsTo(\App\Models\Society::class);
     }
 }

@@ -68,6 +68,55 @@
         </a>
     </div>
 
+     {{-- Total Securities --}}
+    <div class="col-md-3 mt-3">
+        <a href="{{ route('admin.securities.index') }}" class="card-link">
+            <div class="card text-white bg-secondary shadow">
+                <div class="card-body">
+                    <h5>Total Securities</h5>
+                    <h2>{{ $totalSecurities }}</h2>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    {{-- Today's Attendance --}}
+    <div class="col-md-3 mt-3">
+        <a href="{{ route('admin.attendance.index') }}" class="card-link">
+            <div class="card text-white bg-danger shadow">
+                <div class="card-body">
+                    <h5>Today's Attendance</h5>
+                    <h2>{{ $todayAttendance }}</h2>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    {{-- Total Events --}}
+<div class="col-md-3 mt-3">
+    <a href="{{ route('admin.events.index') }}" class="card-link">
+        <div class="card text-white bg-primary shadow">
+            <div class="card-body">
+                <h5>Total Events</h5>
+                <h2>{{ $totalEvents }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header fw-bold">
+                📊 Admin Overview
+            </div>
+            <div class="card-body">
+                <canvas id="adminChart" height="120"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+ 
 </div>
 
 {{-- Optional hover effect --}}
@@ -81,5 +130,44 @@
         box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const ctx = document.getElementById('adminChart');
+    if (!ctx) return;
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {!! json_encode($chartLabels) !!},
+            datasets: [{
+                label: 'Count',
+                data: {!! json_encode($chartData) !!},
+                backgroundColor: [
+                    '#0d6efd',
+                    '#198754',
+                    '#ffc107',
+                    '#0dcaf0',
+                    '#6c757d'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { stepSize: 1 }
+                }
+            }
+        }
+    });
+
+});
+</script>
 
 @endsection
