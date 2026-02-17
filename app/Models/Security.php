@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Security extends Model
 {
     protected $fillable = [
+         'society_id',
         'user_id',
         'name',
         'email',
@@ -25,7 +26,10 @@ class Security extends Model
 
     public function society()
 {
-    return $this->belongsTo(\App\Models\Society::class);
+    return $this->belongsTo(Society::class, 'society_id');
 }
-
+   public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

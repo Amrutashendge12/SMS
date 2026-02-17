@@ -11,12 +11,12 @@
         </a>
     </div>
 
-    {{-- Success Message --}}
+    <!-- {{-- Success Message --}}
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
-    @endif
+    @endif -->
 
     <div class="card">
         <div class="card-body">

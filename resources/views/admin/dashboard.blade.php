@@ -104,6 +104,150 @@
     </a>
 </div>
 
+<div class="col-md-3 mt-3">
+        <a href="{{ route('admin.maintenance.index') }}" class="card-link">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <h5>Total maintenance</h5>
+                    <h2>{{ $totalMaintenance }}</h2>
+                </div>
+            </div>
+        </a>
+</div>
+
+<div class="col-md-3 mt-3">
+    <a href="{{ route('admin.visitors.index') }}" class="text-decoration-none">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5>Total Visitors</h5>
+                <h2>{{ $totalVisitors }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div class="col-md-3 mt-3">
+    <a href="{{ route('admin.amenities.index') }}" class="text-decoration-none">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5>Total Amenities</h5>
+                <h2>{{ $totalAmenities }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div class="col-md-3 mt-3">
+    <a href="{{ route('admin.bookings.pending') }}" class="text-decoration-none">
+        <div class="card bg-info text-white">
+            <div class="card-body text-center">
+                <h5>Total Amenity Bookings</h5>
+                <h2>{{ $totalBookings }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+<div class="col-md-3 mt-3">
+    <a href="{{ route('admin.bookings.pending') }}" class="text-decoration-none">
+        <div class="card bg-warning text-white">
+            <div class="card-body text-center">
+                <h5>Pending Requests</h5>
+                <h2>{{ $pendingBookings }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div class="col-md-3 mt-3">
+    <a href="{{ route('admin.notices.index') }}" class="text-decoration-none">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h5>Total Notices</h5>
+                <h2>{{ $latestNotices }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div class="col-md-3 mt-3">
+    <a href="{{ route('admin.parkings.index') }}" class="text-decoration-none">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5>Total Vehicles</h5>
+                <h2>{{ $totalParking }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div class="col-md-3 mt-3">
+    <a href="{{ route('admin.parkings.index') }}" class="text-decoration-none">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5>Currently Parked</h5>
+                <h2>{{ $parkedVehicles }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+<div class="col-md-3 mt-3">
+    <a href="{{ route('admin.parkings.index') }}" class="text-decoration-none">
+        <div class="card bg-danger text-white">
+            <div class="card-body">
+                <h5>Exited Vehicles</h5>
+                <h2>{{ $exitedVehicles }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div class="col-md-3 mt-3">
+    <a href="{{ route('admin.bills.index') }}" class="text-decoration-none">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5>Total Bills</h5>
+                <h2>{{ $totalBills }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+
+
+<div class="col-md-3 mt-3">
+    <a href="{{ route('admin.bills.index') }}" class="text-decoration-none">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5>Paid Bills</h5>
+                <h2>{{ $paidBills }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+
+
+<div class="col-md-3 mt-3">
+    <a href="{{ route('admin.bills.index') }}" class="text-decoration-none">
+        <div class="card bg-danger text-white">
+            <div class="card-body">
+                <h5>Pending Bills</h5>
+                <h2>{{ $pendingBills }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+
+
+<div class="col-md-3 mt-3">
+    <a href="{{ route('admin.bills.index') }}" class="text-decoration-none">
+        <div class="card bg-warning text-white">
+            <div class="card-body">
+                <h5>Total Due Amount</h5>
+                <h2>₹ {{ $totalDue }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+
 <div class="row mt-4">
     <div class="col-md-6">
         <div class="card shadow">
@@ -115,8 +259,40 @@
             </div>
         </div>
     </div>
+
+      <!-- Visitor Trend -->
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white fw-bold">
+                📈 Daily Visitor Trend
+            </div>
+            <div class="card-body">
+                <canvas id="visitorChart" height="120"></canvas>
+            </div>
+        </div>
+    </div>
+    
 </div>
- 
+
+<div class="row mt-4">
+    <div class="col-md-8">   <!-- ⭐ width kami keli -->
+        <div class="card shadow">
+            <div class="card-header bg-warning text-white">
+                <h5>Maintenance Monthly Graph</h5>
+            </div>
+
+            <div class="card-body">
+
+                <!-- SMALL FIXED SIZE CONTAINER -->
+                <div style="width:100%; height:250px;">
+                    <canvas id="maintenanceChart"></canvas>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 </div>
 
 {{-- Optional hover effect --}}
@@ -168,6 +344,58 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const ctx = document.getElementById('maintenanceChart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: @json($months),
+        datasets: [{
+            label: 'Maintenance Records',
+            data: @json($counts),
+            backgroundColor: '#ffc107',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,   // ⭐ MUST
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top'
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    let labels = @json($visitorTrend->pluck('date'));
+    let totals = @json($visitorTrend->pluck('total'));
+
+    new Chart(document.getElementById('visitorChart'), {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Visitors Per Day',
+                data: totals
+            }]
+        }
+    });
 </script>
 
 @endsection

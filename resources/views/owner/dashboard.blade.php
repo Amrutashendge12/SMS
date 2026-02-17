@@ -13,7 +13,7 @@
             <div class="card bg-success text-white">
                 <div class="card-body">
                     <h5>Total Societies</h5>
-                    <h2>{{ $totalSocieties }}</h2>
+                    <h2>{{ $societiesCount }}</h2>
                 </div>
             </div>
         </a>
@@ -25,7 +25,7 @@
             <div class="card bg-info text-white">
                 <div class="card-body">
                     <h5>Total Phases</h5>
-                    <h2>{{ $totalPhases }}</h2>
+                    <h2>{{ $phasesCount }}</h2>
                 </div>
             </div>
         </a>
@@ -37,7 +37,7 @@
             <div class="card bg-warning text-dark">
                 <div class="card-body">
                     <h5>Total Wings</h5>
-                    <h2>{{ $totalWings }}</h2>
+                    <h2>{{ $wingsCount }}</h2>
                 </div>
             </div>
         </a>
@@ -49,11 +49,12 @@
             <div class="card bg-primary text-white">
                 <div class="card-body">
                     <h5>Total Flats</h5>
-                    <h2>{{ $totalFlats }}</h2>
+                    <h2>{{ $flatsCount }}</h2>
                 </div>
             </div>
         </a>
     </div>
+
 
      {{-- Total Securities --}}
     <div class="col-md-3">
@@ -61,7 +62,18 @@
             <div class="card bg-warning text-white">
                 <div class="card-body">
                     <h5>Total Securities</h5>
-                    <h2>{{ $totalSecurities }}</h2>
+                    <h2>{{ $securitiesCount }}</h2>
+                </div>
+            </div>
+        </a>
+    </div>
+
+     <div class="col-md-3">
+        <a href="{{ route('owner.maintenance.index') }}" class="text-decoration-none">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <h5>Total maintenance</h5>
+                    <h2>{{ $totalMaintenance }}</h2>
                 </div>
             </div>
         </a>
@@ -83,10 +95,142 @@
         <div class="card text-white bg-primary shadow">
             <div class="card-body">
                 <h5>Total Events</h5>
-                <h2>{{ $totalEvents }}</h2>
+                <h2>{{ $eventsCount }}</h2>
             </div>
         </div>
     </a>
+</div>
+<div class="col-md-3 mt-3">
+    <a href="{{ route('owner.visitors.index') }}" class="text-decoration-none">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5>Total Visitors</h5>
+                <h2>{{ $totalVisitors }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+
+
+<div class="col-md-3">
+    <a href="{{ route('owner.notices.index') }}" class="text-decoration-none">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h5>Total Notices</h5>
+                <h2>{{ $latestNotices }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div class="col-md-3 mt-3">
+    <a href="{{ route('owner.amenities.index') }}" class="text-decoration-none">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5>Total Amenities</h5>
+                <h2>{{ $totalAmenities }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div class="col-md-3 mt-3">
+    <a href="{{ route('owner.amenities.index') }}" class="text-decoration-none">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5>My Amenity Bookings</h5>
+                <h2>{{ $myBookings }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+<div class="col-md-3 mt-3">
+    <a href="{{ route('owner.amenities.my') }}" class="text-decoration-none">
+        <div class="card bg-warning text-white">
+            <div class="card-body text-center">
+                <h5>Total Bookings</h5>
+                <h2>{{ $totalBookings }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+<div class="col-md-3 mt-3">
+    <a href="{{ route('owner.parkings.index') }}" class="text-decoration-none">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5>Total Vehicles</h5>
+                <h2>{{ $totalParking }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div class="col-md-3 mt-3">
+    <a href="{{ route('owner.parkings.index') }}" class="text-decoration-none">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5>Currently Parked</h5>
+                <h2>{{ $parkedVehicles }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+<div class="col-md-3 mt-3">
+    <a href="{{ route('owner.parkings.index') }}" class="text-decoration-none">
+        <div class="card bg-danger text-white">
+            <div class="card-body">
+                <h5>Exited Vehicles</h5>
+                <h2>{{ $exitedVehicles }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+<div class="row">
+
+    <div class="col-md-3 mt-3">
+        <a href="{{ route('owner.bills.index') }}" class="text-decoration-none">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h5>My Total Bills</h5>
+                    <h2>{{ $myTotalBills }}</h2>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3 mt-3">
+        <a href="{{ route('owner.bills.index') }}" class="text-decoration-none">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5>Paid Bills</h5>
+                    <h2>{{ $myPaidBills }}</h2>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3 mt-3">
+        <a href="{{ route('owner.bills.index') }}" class="text-decoration-none">
+            <div class="card bg-danger text-white">
+                <div class="card-body">
+                    <h5>Pending Bills</h5>
+                    <h2>{{ $myPendingBills }}</h2>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3 mt-3">
+        <a href="{{ route('owner.bills.index') }}" class="text-decoration-none">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <h5>Due Amount</h5>
+                    <h2>₹ {{ $myDueAmount }}</h2>
+                </div>
+            </div>
+        </a>
+    </div>
+
 </div>
 
 <div class="row mt-4">
@@ -100,8 +244,39 @@
             </div>
         </div>
     </div>
+
+    <!-- Visitor Trend -->
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white fw-bold">
+                📈 Daily Visitor Trend
+            </div>
+            <div class="card-body">
+                <canvas id="visitorChart" height="120"></canvas>
+            </div>
+        </div>
+    </div>
+
 </div>
 
+<div class="row mt-4">
+    <div class="col-md-8">   <!-- ⭐ width kami keli -->
+        <div class="card shadow">
+            <div class="card-header bg-warning text-white">
+                <h5>Maintenance Monthly Graph</h5>
+            </div>
+
+            <div class="card-body">
+
+                <!-- SMALL FIXED SIZE CONTAINER -->
+                <div style="width:100%; height:250px;">
+                    <canvas id="maintenanceChart"></canvas>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 </div>
    
@@ -153,6 +328,56 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const ctx = document.getElementById('maintenanceChart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: @json($months),
+        datasets: [{
+            label: 'Maintenance Records',
+            data: @json($counts),
+            backgroundColor: '#ffc107',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,   // ⭐ MUST
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top'
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+<script>
+    let labels = @json($visitorTrend->pluck('date'));
+    let totals = @json($visitorTrend->pluck('total'));
+
+    new Chart(document.getElementById('visitorChart'), {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Visitors Per Day',
+                data: totals
+            }]
+        }
+    });
 </script>
 
 @endsection

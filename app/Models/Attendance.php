@@ -13,7 +13,8 @@ class Attendance extends Model
 
 public function security()
 {
-    return $this->belongsTo(User::class,'security_id');
+    return $this->belongsTo(Security::class, 'security_id');
 }
+
 
 }

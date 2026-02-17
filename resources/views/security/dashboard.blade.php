@@ -100,33 +100,152 @@
             </a>
         </div>
 
+        <div class="col-md-3 mt-3">
+            <a href="{{ route('security.events.index') }}" class=" text-decoration-none">
+                <div class="card shadow-sm border-dark h-100">
+                    <div class="card-body text-center">
+                        <h5 class="text-muted">Total Events</h5>
+                        <h2 class="fw-bold text-dark">{{ $eventsCount }}</h2>
+                     </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-3 mt-3">
+            <a href="{{ route('security.maintenance.index') }}" class="text-decoration-none">
+                <div class="card shadow-sm border-dark h-100">
+                    <div class="card-body text-center">
+                        <h5>Total maintenance</h5>
+                        <h2>{{ $totalMaintenance }}</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+
 <div class="col-md-3 mt-3">
-    <a href="{{ route('security.events.index') }}" class="card-link">
-        <div class="card text-white bg-primary shadow">
-            <div class="card-body">
-                <h5>Total Events</h5>
-                <h2>{{ $eventsCount }}</h2>
+    <a href="{{ route('security.visitors.index') }}" class="text-decoration-none">
+        <div class="card shadow-sm border-primary h-100">
+            <div class="card-body text-center"></div>
+                <h5>Total Visitors</h5>
+                <h2>{{ $totalVisitors }}</h2>
             </div>
         </div>
     </a>
 </div>
+
+</div>
+
+<div class="row">
+
+    {{-- Total Notices --}}
+    <div class="col-md-3 mt-3">
+        <a href="{{ route('security.notices.index') }}" class="text-decoration-none">
+            <div class="card shadow-sm border-dark h-100">
+                <div class="card-body text-center">
+                    <h5>Total Notices</h5>
+                    <h2>{{ $latestNotices }}</h2>
+                </div>
+            </div>
+        </a>
     </div>
 
+    <div class="col-md-3 mt-3">
+        <a href="{{ route('security.amenities.index') }}" class="text-decoration-none">
+        <div class="card shadow-sm border-success h-100">
+            <div class="card-body text-center">
+                <h5>Total Amenities</h5>
+                <h2>{{ $totalAmenities }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div class="col-md-3 mt-3">
+    <a href="{{ route('security.parkings.index') }}" class="text-decoration-none">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5>Total Vehicles</h5>
+                <h2>{{ $totalParking }}</h2>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div class="col-md-3 mt-3">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5>Currently Parked</h5>
+                <h2>{{ $parkedVehicles }}</h2>
+            </div>
+        </div>
+</div>
+
+<div class="col-md-3 mt-3">
+        <div class="card bg-danger text-white">
+            <div class="card-body">
+                <h5>Exited Vehicles</h5>
+                <h2>{{ $exitedVehicles }}</h2>
+            </div>
+        </div>
+</div>
+
+
+
+</div>
+
     {{-- DASHBOARD CHART --}}
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-header fw-bold">
-                    📊 Society Overview
-                </div>
-                <div class="card-body">
-                    <canvas id="overviewChart" height="120"></canvas>
-                </div>
+   
+<div class="row mt-4">
+
+    <!-- Society Overview -->
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header fw-bold">
+                📊 Society Overview
+            </div>
+            <div class="card-body">
+                <canvas id="overviewChart" height="120"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visitor Trend -->
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white fw-bold">
+                📈 Daily Visitor Trend
+            </div>
+            <div class="card-body">
+                <canvas id="visitorChart" height="120"></canvas>
             </div>
         </div>
     </div>
 
 </div>
+
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-warning text-white">
+                <h5>Maintenance Monthly Graph</h5>
+            </div>
+            <div class="card-body">
+
+                <!-- SMALL CHART CONTAINER -->
+                <div style=" width:100%; height:300px;">
+                    <canvas id="maintenanceChart"></canvas>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</div>
+
 
 {{-- CHART SCRIPT --}}
 <script>
@@ -169,6 +288,58 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const ctx = document.getElementById('maintenanceChart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: @json($months),
+        datasets: [{
+            label: 'Maintenance Records',
+            data: @json($counts),
+            backgroundColor: '#ffc107',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,   // ⭐ MUST
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top'
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    let labels = @json($visitorTrend->pluck('date'));
+    let totals = @json($visitorTrend->pluck('total'));
+
+    new Chart(document.getElementById('visitorChart'), {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Visitors Per Day',
+                data: totals
+            }]
+        }
+    });
 </script>
 
 @endsection

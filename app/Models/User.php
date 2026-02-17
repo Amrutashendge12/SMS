@@ -55,4 +55,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function society()
+{
+    return $this->belongsTo(Society::class);
+}
+
 }

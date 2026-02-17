@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Society extends Model
 {
     protected $fillable = [
+            'owner_id',
         'society_name',
         'registration_no',
         'address',
@@ -14,9 +15,19 @@ class Society extends Model
         'pincode',
          'owner_id'
     ];
+
 public function phases()
 {
-    return $this->hasMany(\App\Models\Phase::class);
+    return $this->hasMany(Phase::class, 'society_id');
+}
+
+public function owner()
+{
+    return $this->belongsTo(User::class, 'owner_id');
+}
+public function securities()
+{
+    return $this->hasMany(Security::class);
 }
 
 

@@ -3,126 +3,158 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Contact | Society Management</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
-
-    <!-- Tailwind / Vite -->
+    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        .card-hover { transition: all .3s ease; }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(0,0,0,.12);
+        }
+    </style>
 </head>
 
-<body class="bg-[#FDFDFC] text-[#1b1b18] min-h-screen flex flex-col">
+<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
 
 <!-- ================= NAVBAR ================= -->
-<header class="w-full border-b">
-    <nav class="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
-
-        <div class="font-semibold text-lg">
+<header class="bg-white shadow-sm">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="font-bold text-xl text-blue-600">
             🏢 Society Management
         </div>
 
-        <div class="flex items-center gap-6">
-            <a href="/" class="hover:underline">Home</a>
-            <a href="/about" class="hover:underline">About</a>
-            <a href="/contact" class="font-semibold underline">Contact</a>
+        <div class="flex items-center gap-6 font-medium">
+            <a href="/" class="hover:text-blue-600">Home</a>
+            <a href="/about" class="hover:text-blue-600">About</a>
+            <a href="/contact" class="text-blue-600 font-semibold">Contact</a>
 
-            @if (Route::has('login'))
-                @auth
-                    <a href="{{ url('/dashboard') }}"
-                       class="px-4 py-1.5 border rounded hover:border-black">
-                        Dashboard
-                    </a>
-                @else
-                    <a href="{{ route('login') }}"
-                       class="px-4 py-1.5 border rounded hover:border-black">
-                        Login
-                    </a>
-                @endauth
-            @endif
+            @auth
+                <a href="{{ url('/dashboard') }}"
+                   class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    Dashboard
+                </a>
+            @else
+                <a href="{{ route('login') }}"
+                   class="border px-4 py-2 rounded-lg hover:bg-gray-100">
+                    Login
+                </a>
+            @endauth
         </div>
-
     </nav>
 </header>
 
+<!-- ================= HERO ================= -->
+<section class="bg-blue-600 text-white py-12 text-center">
+    <h1 class="text-4xl font-bold mb-3">Contact Us</h1>
+    <p class="text-lg opacity-90">
+        Have questions or need support? We're here to help you.
+    </p>
+</section>
+
 <!-- ================= CONTACT SECTION ================= -->
-<section class="py-20 bg-white flex-grow">
-    <div class="max-w-6xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-start">
+<section class="py-12 flex-grow">
+    <div class="max-w-7xl mx-auto px-6">
 
-        <!-- LEFT : CONTACT FORM -->
-        <div>
-            <h1 class="text-3xl font-bold mb-4">Contact Us</h1>
-            <p class="text-gray-600 mb-8">
-                Have a question or need support? Send us a message.
-            </p>
+        <div class="grid lg:grid-cols-3 gap-6">
 
-            <!-- Success Message -->
-            @if (session('success'))
-                <div class="bg-green-100 text-green-700 p-4 rounded mb-6">
-                    {{ session('success') }}
-                </div>
-            @endif
+            <!-- ================= CONTACT INFO ================= -->
+            <div class="space-y-6">
 
-            <!-- Error Messages -->
-            @if ($errors->any())
-                <div class="bg-red-100 text-red-700 p-4 rounded mb-6">
-                    <ul class="list-disc ml-5">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            <form method="POST" action="/contact-submit"
-                  class="bg-gray-50 p-8 rounded-lg shadow space-y-5">
-                @csrf
-
-                <div>
-                    <label class="block mb-1 font-medium">Name</label>
-                    <input type="text" name="name"
-                           value="{{ old('name') }}"
-                           class="w-full border rounded px-4 py-2 focus:ring-2 focus:ring-blue-500">
+                <div class="bg-white p-6 rounded-xl shadow card-hover">
+                    <h3 class="font-semibold text-lg mb-4 text-blue-600">
+                        📍 Address
+                    </h3>
+                    <p class="text-sm text-gray-600">
+                        ABC Society,<br>
+                        Baner Road, Pune,<br>
+                        Maharashtra, India
+                    </p>
                 </div>
 
-                <div>
-                    <label class="block mb-1 font-medium">Email</label>
-                    <input type="email" name="email"
-                           value="{{ old('email') }}"
-                           class="w-full border rounded px-4 py-2 focus:ring-2 focus:ring-blue-500">
+                <div class="bg-white p-6 rounded-xl shadow card-hover">
+                    <h3 class="font-semibold text-lg mb-4 text-blue-600">
+                        📞 Contact
+                    </h3>
+                    <p class="text-sm text-gray-600">
+                        Phone: +91 98765 43210<br>
+                        Email: support@society.com
+                    </p>
                 </div>
 
-                <div>
-                    <label class="block mb-1 font-medium">Message</label>
-                    <textarea name="message" rows="4"
-                              class="w-full border rounded px-4 py-2 focus:ring-2 focus:ring-blue-500">{{ old('message') }}</textarea>
+                <div class="bg-white p-6 rounded-xl shadow card-hover">
+                    <h3 class="font-semibold text-lg mb-4 text-blue-600">
+                        ⏰ Working Hours
+                    </h3>
+                    <p class="text-sm text-gray-600">
+                        Mon – Sat : 9 AM – 7 PM<br>
+                        Sunday : Closed
+                    </p>
                 </div>
 
-                <button type="submit"
-                        class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
-                    Send Message
-                </button>
-            </form>
+            </div>
+
+            <!-- ================= CONTACT FORM ================= -->
+
+        <!-- FLEX ROW -->
+        <div class="flex flex-col lg:flex-row gap-6"></div>
+
+ <div class="bg-white rounded-xl shadow-md w-full lg:w-1/2">
+
+                <div class="bg-blue-600 text-white px-5 py-3 rounded-t-xl font-semibold">
+                    📩 Contact Form
+                </div>
+
+                <div class="p-6">
+
+                    <form method="POST" action="/contact-submit" class="space-y-4">
+                        @csrf
+
+                        <input type="text" name="name" placeholder="Name"
+                            class="w-full border rounded-lg px-3 py-2 text-sm">
+
+                        <input type="email" name="email" placeholder="Email"
+                            class="w-full border rounded-lg px-3 py-2 text-sm">
+
+                        <textarea name="message" rows="5" placeholder="Message"
+                            class="w-full border rounded-lg px-3 py-2 text-sm"></textarea>
+
+                        <button class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
+                            Send Message
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+           <!-- MAP CARD -->
+<div class="bg-white rounded-xl shadow-md w-full lg:w-1/2 flex flex-col">
+
+    <div class="bg-green-600 text-white px-5 py-3 rounded-t-xl font-semibold">
+        📍 Society Location
+    </div>
+
+    <iframe
+        src="https://www.google.com/maps?q=Pune,Maharashtra&output=embed"
+        class="w-full h-[340px] rounded-b-xl border-0">
+    </iframe>
+
+</div>
+
+
         </div>
 
-        <!-- RIGHT : CONTACT INFORMATION -->
-        <div class="bg-gray-50 p-8 rounded-lg shadow">
-            <h2 class="text-2xl font-semibold mb-6">Contact Information</h2>
-
-            <div class="space-y-4 text-gray-700">
-                <p class="flex items-center gap-3">
-                    📧 <span><strong>Email:</strong> society@gmail.com</span>
-                </p>
-                <p class="flex items-center gap-3">
-                    📞 <span><strong>Phone:</strong> +91 9876543210</span>
-                </p>
-                <p class="flex items-center gap-3">
-                    📍 <span><strong>Address:</strong> Pune, Maharashtra</span>
-                </p>
-                <p class="flex items-center gap-3">
-                    ⏰ <span><strong>Working Hours:</strong> Mon – Sat, 9 AM – 6 PM</span>
-                </p>
+        <!-- ================= SOCIAL ================= -->
+        <div class="mt-12 text-center">
+            <h3 class="font-semibold text-lg mb-3">Follow Us</h3>
+            <div class="flex justify-center gap-6 text-2xl">
+                <span>🌐</span>
+                <span>📘</span>
+                <span>📸</span>
+                <span>🐦</span>
             </div>
         </div>
 
@@ -130,7 +162,7 @@
 </section>
 
 <!-- ================= FOOTER ================= -->
-<footer class="bg-gray-800 text-white py-6 text-center">
+<footer class="bg-gray-900 text-gray-300 py-6 text-center">
     © {{ date('Y') }} Society Management System. All rights reserved.
 </footer>
 
