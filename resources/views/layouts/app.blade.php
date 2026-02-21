@@ -10,6 +10,8 @@
 
     {{-- Admin Custom CSS --}}
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body class="bg-light">
@@ -103,7 +105,7 @@
                 </details>
 
                 <details class="mb-2 sidebar-details">
-                    <summary class="sidebar-summary">🛡️ Security</summary>
+                    <summary class="sidebar-summary"> Security</summary>
                     <div class="sidebar-submenu">
                         <a href="{{ route('admin.securities.index') }}" class="sidebar-link">View Security</a>
                         <a href="{{ route('admin.securities.create') }}" class="sidebar-link"> + Add Security</a>
@@ -349,6 +351,25 @@
 
 @endif
 
+<details class="mb-2">
+    <summary>Complaints</summary>
+
+    {{-- ADMIN --}}
+    @if(auth()->user()->role === 'admin')
+        <a href="{{ route('complaints.index') }}">View Complaints</a>
+
+    {{-- OWNER --}}
+    @elseif(auth()->user()->role === 'owner')
+        <a href="{{ route('complaints.index') }}">View Complaints</a>
+        <a href="{{ route('complaints.create') }}">+ Raise Complaint</a>
+
+    {{-- SECURITY --}}
+    @elseif(auth()->user()->role === 'security')
+        <a href="{{ route('complaints.index') }}">View Complaints</a>
+        <a href="{{ route('complaints.create') }}">+ Raise Complaint</a>
+    @endif
+
+</details>
 
 
 </div>

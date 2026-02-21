@@ -11,6 +11,7 @@ use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\VisitorController;
 use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\BillController;
+use App\Http\Controllers\ComplaintController;
 
 // Admin
 use App\Http\Controllers\Admin\AdminDashboardController;
@@ -73,6 +74,13 @@ Route::middleware('auth')->get('/dashboard', function () {
 
     return redirect()->route('owner.dashboard');
 })->name('dashboard');
+
+ Route::resource('complaints', ComplaintController::class);
+
+    Route::get('complaints/{id}/resolve',
+        [ComplaintController::class,'resolve'])
+        ->name('complaints.resolve');
+
 /*
 |--------------------------------------------------------------------------
 | Role Based Dashboards
