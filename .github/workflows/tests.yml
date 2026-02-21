@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-      - '*.x'
+      - '**'
   pull_request:
   schedule:
     - cron: '0 0 * * *'
@@ -36,6 +36,12 @@ jobs:
 
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-interaction --no-progress
+
+      - name: Install Node dependencies
+        run: npm install
+
+      - name: Build assets
+        run: npm run build
 
       - name: Copy environment file
         run: cp .env.example .env

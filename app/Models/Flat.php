@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Wing;
+
 class Flat extends Model
 {
     protected $fillable = [
@@ -18,4 +20,8 @@ class Flat extends Model
     {
         return $this->belongsTo(Wing::class);
     }
+
+    // ✅ Indirect relation
+ 
+
 }

@@ -16,4 +16,9 @@ class Wing extends Model
     {
         return $this->belongsTo(Phase::class);
     }
+    
+public function society()
+{
+    return $this->belongsTo(Society::class);
+}
 }

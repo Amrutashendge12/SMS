@@ -30,6 +30,7 @@ class SocietyController extends Controller
         ]);
 
         Society::create([
+              'owner_id'        => auth()->id(),
             'society_name'    => $request->society_name,
             'registration_no' => $request->registration_no,
             'address'         => $request->address,
