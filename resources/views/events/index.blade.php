@@ -19,7 +19,8 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <table class="table table-bordered">
+    <table class="table table-bordered datatable">
+
         <thead>
             <tr>
                 <th>Photo</th>
@@ -35,7 +36,7 @@
             <tr>
                 <td>
                     @if($event->photo)
-                        <img src="{{ asset('storage/'.$event->photo) }}" width="60">
+                        <img src="{{ asset('storage/'.$event->photo) }}"  width="40" height="40"  class="rounded-circle">
                     @else
                         —
                     @endif

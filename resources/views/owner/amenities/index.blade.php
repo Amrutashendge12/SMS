@@ -6,8 +6,9 @@
 
     <h2 class="mb-4">Available Amenities</h2>
 
-    <table class="table table-bordered">
-        <thead>
+<table class="table table-bordered datatable">
+
+    <thead>
             <tr>
                 <th>Amenity Name</th>
                 <th>Charges</th>

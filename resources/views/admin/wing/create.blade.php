@@ -30,7 +30,7 @@
 
                 <div class="row">
 
-                    {{-- Phase Select --}}
+                    <!-- {{-- Phase Select --}}
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Select Phase</label>
                         <select name="phase_id" class="form-select" required>
@@ -43,8 +43,33 @@
                                 </option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> -->
 
+                    <div class="col-md-6 mb-3">
+    <label class="form-label">Select Society</label>
+    <select id="societyDropdown" class="form-select">
+        <option value="">-- Select Society --</option>
+        @foreach($societies as $society)
+            <option value="{{ $society->id }}">
+                {{ $society->society_name }}
+            </option>
+        @endforeach
+    </select>
+</div>
+
+<div class="col-md-6 mb-3">
+    <label class="form-label">Select Phase</label>
+    <select name="phase_id" id="phaseDropdown" class="form-select" required>
+        <option value="">-- Select Phase --</option>
+        @foreach($phases as $phase)
+            <option value="{{ $phase->id }}"
+                    data-society="{{ $phase->society_id }}"
+                    {{ old('phase_id') == $phase->id ? 'selected' : '' }}>
+                {{ $phase->phase_name }}
+            </option>
+        @endforeach
+    </select>
+</div>
                     {{-- Wing Name --}}
                     <div class="col-md-3 mb-3">
                         <label class="form-label">Wing Name</label>
@@ -84,5 +109,24 @@
     </div>
 
 </div>
+
+<script>
+document.getElementById('societyDropdown').addEventListener('change', function() {
+    let societyId = this.value;
+    let phaseOptions = document.querySelectorAll('#phaseDropdown option');
+
+    phaseOptions.forEach(option => {
+        if(option.value === "") return;
+
+        if(option.dataset.society == societyId) {
+            option.style.display = 'block';
+        } else {
+            option.style.display = 'none';
+        }
+    });
+
+    document.getElementById('phaseDropdown').value = "";
+});
+</script>
 
 @endsection

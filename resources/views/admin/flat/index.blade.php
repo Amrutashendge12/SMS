@@ -22,7 +22,7 @@
         <div class="card-body">
 
             <div class="table-responsive">
-                <table class="table table-bordered table-striped align-middle">
+                <table id="flatTable" class="table table-bordered table-striped align-middle">
                     <thead class="table-dark">
                         <tr>
                             <th>#</th>
@@ -88,5 +88,11 @@
     </div>
 
 </div>
-
+@section('scripts')
+<script>
+$(document).ready(function () {
+    $('#flatTable').DataTable();
+});
+</script>
+@endsection
 @endsection

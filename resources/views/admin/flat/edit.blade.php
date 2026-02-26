@@ -29,7 +29,7 @@
 
                 <div class="row">
 
-                    {{-- Wing --}}
+                    <!-- {{-- Wing --}}
                     <div class="col-md-12 mb-3">
                         <label class="form-label">Select Wing</label>
                         <select name="wing_id" class="form-select" required>
@@ -42,8 +42,45 @@
                                 </option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> -->
 
+<div class="col-md-4 mb-3">
+    <label class="form-label">Select Society</label>
+    <select id="societyDropdown" class="form-select">
+        <option value="">-- Select Society --</option>
+        @foreach($societies as $society)
+            <option value="{{ $society->id }}">
+                {{ $society->society_name }}
+            </option>
+        @endforeach
+    </select>
+</div>
+
+<div class="col-md-4 mb-3">
+    <label class="form-label">Select Phase</label>
+    <select id="phaseDropdown" class="form-select">
+        <option value="">-- Select Phase --</option>
+        @foreach($phases as $phase)
+            <option value="{{ $phase->id }}"
+                    data-society="{{ $phase->society_id }}">
+                {{ $phase->phase_name }}
+            </option>
+        @endforeach
+    </select>
+</div>
+
+<div class="col-md-4 mb-3">
+    <label class="form-label">Select Wing</label>
+    <select name="wing_id" id="wingDropdown" class="form-select" required>
+        <option value="">-- Select Wing --</option>
+        @foreach($wings as $wing)
+            <option value="{{ $wing->id }}"
+                    data-phase="{{ $wing->phase_id }}">
+                Wing {{ $wing->wing_name }}
+            </option>
+        @endforeach
+    </select>
+</div>
                     {{-- Flat Number --}}
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Flat Number</label>
@@ -98,4 +135,37 @@
 
 </div>
 
+<script>
+
+// Society → Phase filter
+document.getElementById('societyDropdown').addEventListener('change', function() {
+    let societyId = this.value;
+
+    document.querySelectorAll('#phaseDropdown option').forEach(option => {
+        if(option.value === "") return;
+
+        option.style.display =
+            option.dataset.society == societyId ? 'block' : 'none';
+    });
+
+    document.getElementById('phaseDropdown').value = "";
+    document.getElementById('wingDropdown').value = "";
+});
+
+
+// Phase → Wing filter
+document.getElementById('phaseDropdown').addEventListener('change', function() {
+    let phaseId = this.value;
+
+    document.querySelectorAll('#wingDropdown option').forEach(option => {
+        if(option.value === "") return;
+
+        option.style.display =
+            option.dataset.phase == phaseId ? 'block' : 'none';
+    });
+
+    document.getElementById('wingDropdown').value = "";
+});
+
+</script>
 @endsection

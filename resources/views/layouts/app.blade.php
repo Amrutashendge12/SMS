@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+
     <meta charset="UTF-8">
     <title>{{ ucfirst(auth()->user()->role) }} Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,8 +14,13 @@
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
 
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+
+
+
+</head>
 <body class="bg-light">
 
 {{-- ================= TOP NAVBAR ================= --}}
@@ -67,9 +74,12 @@
             </button>
 
             @if(auth()->user()->role === 'admin')
-                <strong>Admin</strong>
-                <hr class="text-secondary">
+               
+                <div class="sidebar p-3">
 
+                    <h5 class="text-white mb-3">⚙ Admin Panel</h5>
+                </div>
+                
                 <a href="{{ route('admin.dashboard') }}" class="fw-bold mb-2">
                     Dashboard
                 </a>
@@ -116,7 +126,9 @@
             @endif
 
             @if(auth()->user()->role === 'owner')
-                 <strong>Owner</strong>
+                <div class="sidebar p-3">
+                    <h5 class="text-white mb-3">⚙ Owner Panel</h5>
+                </div>
 
                 <hr class="text-secondary">
                  <a href="{{ route('owner.dashboard') }}" class="fw-bold mb-2">
@@ -153,12 +165,13 @@
             @endif
 
 @if(auth()->user()->role === 'security')
-
-    <strong>Security Panel</strong>
+    <div class="sidebar p-3">
+        <h5 class="text-white mb-3">⚙ Security Panel</h5>
+    </div>
     <hr class="text-secondary">
 
     {{-- Dashboard --}}
-    <a href="{{ route('security.dashboard') }}" class="fw-bold mb-2 d-block">
+    <a href="{{ route('security.dashboard') }}" class="fw-bold mb-2 p-3 d-block">
         Dashboard
     </a>
 
@@ -469,6 +482,19 @@ Swal.fire({
 });
 </script>
 @endif
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+
+<script>
+$(document).ready(function () {
+    $('.datatable').DataTable();
+});
+</script>
+
+@yield('scripts')
+
+
 
 </body>
 </html>

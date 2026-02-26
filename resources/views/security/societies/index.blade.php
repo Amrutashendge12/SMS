@@ -8,7 +8,8 @@
 <div class="card shadow">
     <div class="card-body table-responsive">
 
-        <table class="table table-bordered align-middle">
+    <table class="table table-bordered datatable">
+
             <thead class="table-dark">
                 <tr>
                     <th>#</th>

@@ -38,6 +38,16 @@ class MemberController extends Controller
             'mobile'   => 'required',
             'password' => 'required|confirmed|min:6',
             'profile_photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+
+               // Optional family fields
+    'father_name' => 'nullable|string|max:255',
+    'mother_name' => 'nullable|string|max:255',
+    'wife_name' => 'nullable|string|max:255',
+    'old_people_name' => 'nullable|string',
+    'boy_names' => 'nullable|string',
+    'girl_names' => 'nullable|string',
+    'guest_name' => 'nullable|string|max:255',
+
         ]);
 
         // Upload photo
@@ -63,6 +73,16 @@ class MemberController extends Controller
             'occupation'           => $request->occupation,
             'address'              => $request->address,
             'profile_photo'        => $photoPath,
+
+             // NEW OPTIONAL FIELDS
+            'father_name' => $request->father_name,
+            'mother_name' => $request->mother_name,
+            'wife_name' => $request->wife_name,
+            'old_people_name' => $request->old_people_name,
+            'boy_names' => $request->boy_names,
+            'girl_names' => $request->girl_names,
+            'guest_name' => $request->guest_name,
+
         ]);
 
         // Assign flat (if selected)

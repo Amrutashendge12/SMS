@@ -25,8 +25,8 @@
                 </div>
             @endif
 
-            <table class="table table-bordered table-hover">
-                <thead class="table-primary">
+        <table class="table table-bordered datatable">
+            <thead class="table-primary">
                     <tr>
                         <th>#</th>
                         <th>User</th>

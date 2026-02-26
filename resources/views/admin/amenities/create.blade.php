@@ -20,7 +20,7 @@
                 <option value="Meeting Hall" data-charge="1000">Meeting Hall</option>
                 <option value="Garden" data-charge="0">Garden</option>
                 <option value="Seminar Hall" data-charge="1500">Seminar Hall</option>
-                <option value="Visitor Room" data-charge="800">Visitor Room</option>
+                <option value="Visitor Room" data-charge="800">Guest House</option>
                 <option value="Cricket Ground" data-charge="500">Cricket Ground</option>
                 <option value="Club House" data-charge="1200">Club House</option>
 

@@ -5,8 +5,9 @@
 <div class="container">
     <h2>Amenities List</h2>
 
-    <table class="table table-bordered">
-        <thead class="table-dark">
+<table class="table table-bordered datatable">
+
+    <thead class="table-dark">
             <tr>
                 <th>Name</th>
                 <th>Description</th>

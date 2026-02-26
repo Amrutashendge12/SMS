@@ -22,7 +22,7 @@
         <div class="card-body">
 
             <div class="table-responsive">
-                <table class="table table-bordered table-striped align-middle">
+                <table id="securityTable" class="table table-bordered table-striped align-middle">
                     <thead class="table-dark">
                         <tr>
                             <th>#</th>
@@ -72,5 +72,13 @@
     </div>
 
 </div>
+
+@section('scripts')
+<script>
+$(document).ready(function () {
+    $('#securityTable').DataTable();
+});
+</script>
+@endsection
 
 @endsection

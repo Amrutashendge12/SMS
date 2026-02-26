@@ -303,7 +303,7 @@
 </div>
 
 <div class="row mt-4">
-    <div class="col-md-8">   <!-- ⭐ width kami keli -->
+    <div class="col-md-6">   <!-- ⭐ width kami keli -->
         <div class="card shadow">
             <div class="card-header bg-warning text-white">
                 <h5>Maintenance Monthly Graph</h5>

@@ -89,6 +89,56 @@
                                class="form-control">
                     </div>
 
+                    {{-- Family Member Names --}}
+
+<div class="col-md-4 mb-3">
+    <label>Father Name</label>
+    <input type="text" name="father_name"
+           value="{{ $member->father_name }}"
+           class="form-control">
+</div>
+
+<div class="col-md-4 mb-3">
+    <label>Mother Name</label>
+    <input type="text" name="mother_name"
+           value="{{ $member->mother_name }}"
+           class="form-control">
+</div>
+
+<div class="col-md-4 mb-3">
+    <label>Wife Name</label>
+    <input type="text" name="wife_name"
+           value="{{ $member->wife_name }}"
+           class="form-control">
+</div>
+
+<div class="col-md-4 mb-3">
+    <label>Old People Names</label>
+    <input type="text" name="old_people_name"
+           value="{{ $member->old_people_name }}"
+           class="form-control">
+</div>
+
+<div class="col-md-4 mb-3">
+    <label>Boy Names</label>
+    <input type="text" name="boy_names"
+           value="{{ $member->boy_names }}"
+           class="form-control">
+</div>
+
+<div class="col-md-4 mb-3">
+    <label>Girl Names</label>
+    <input type="text" name="girl_names"
+           value="{{ $member->girl_names }}"
+           class="form-control">
+</div>
+
+<div class="col-md-4 mb-3">
+    <label>Guest Name</label>
+    <input type="text" name="guest_name"
+           value="{{ $member->guest_name }}"
+           class="form-control">
+</div>
                     {{-- Other --}}
                     <div class="col-md-4 mb-3">
                         <label>Occupation</label>

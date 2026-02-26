@@ -99,50 +99,56 @@
 
             <!-- ================= CONTACT FORM ================= -->
 
-        <!-- FLEX ROW -->
-        <div class="flex flex-col lg:flex-row gap-6"></div>
+<!-- ================= CONTACT FORM + MAP ================= -->
 
- <div class="bg-white rounded-xl shadow-md w-full lg:w-1/2">
+<div class="lg:col-span-2">
+    <div class="flex flex-col lg:flex-row gap-6">
 
-                <div class="bg-blue-600 text-white px-5 py-3 rounded-t-xl font-semibold">
-                    📩 Contact Form
-                </div>
+        <!-- CONTACT FORM -->
+        <div class="bg-white rounded-xl shadow-md w-full lg:w-1/2">
 
-                <div class="p-6">
-
-                    <form method="POST" action="/contact-submit" class="space-y-4">
-                        @csrf
-
-                        <input type="text" name="name" placeholder="Name"
-                            class="w-full border rounded-lg px-3 py-2 text-sm">
-
-                        <input type="email" name="email" placeholder="Email"
-                            class="w-full border rounded-lg px-3 py-2 text-sm">
-
-                        <textarea name="message" rows="5" placeholder="Message"
-                            class="w-full border rounded-lg px-3 py-2 text-sm"></textarea>
-
-                        <button class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
-                            Send Message
-                        </button>
-
-                    </form>
-
-                </div>
+            <div class="bg-blue-600 text-white px-5 py-3 rounded-t-xl font-semibold">
+                📩 Contact Form
             </div>
-           <!-- MAP CARD -->
-<div class="bg-white rounded-xl shadow-md w-full lg:w-1/2 flex flex-col">
 
-    <div class="bg-green-600 text-white px-5 py-3 rounded-t-xl font-semibold">
-        📍 Society Location
+            <div class="p-6">
+                <form method="POST" action="/contact-submit" class="space-y-4">
+                    @csrf
+
+                    <input type="text" name="name" placeholder="Name"
+                        class="w-full border rounded-lg px-3 py-2 text-sm">
+
+                    <input type="email" name="email" placeholder="Email"
+                        class="w-full border rounded-lg px-3 py-2 text-sm">
+
+                    <textarea name="message" rows="5" placeholder="Message"
+                        class="w-full border rounded-lg px-3 py-2 text-sm"></textarea>
+
+                    <button class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- MAP -->
+        <div class="bg-white rounded-xl shadow-md w-full lg:w-1/2 flex flex-col">
+
+            <div class="bg-green-600 text-white px-5 py-3 rounded-t-xl font-semibold">
+                📍 Society Location
+            </div>
+
+            <iframe
+                src="https://www.google.com/maps?q=Pune,Maharashtra&output=embed"
+                class="w-full h-[340px] rounded-b-xl border-0">
+            </iframe>
+
+        </div>
+
     </div>
-
-    <iframe
-        src="https://www.google.com/maps?q=Pune,Maharashtra&output=embed"
-        class="w-full h-[340px] rounded-b-xl border-0">
-    </iframe>
-
 </div>
+
+
 
 
         </div>
