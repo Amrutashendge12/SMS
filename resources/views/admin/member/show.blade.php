@@ -51,6 +51,43 @@
                             <th>Old People</th>
                             <td>{{ $member->old_people }}</td>
                         </tr>
+
+                        {{-- Detailed Family Names --}}
+
+<tr>
+    <th>Father Name</th>
+    <td>{{ $member->father_name ?? 'Not Provided' }}</td>
+</tr>
+
+<tr>
+    <th>Mother Name</th>
+    <td>{{ $member->mother_name ?? 'Not Provided' }}</td>
+</tr>
+
+<tr>
+    <th>Wife Name</th>
+    <td>{{ $member->wife_name ?? 'Not Provided' }}</td>
+</tr>
+
+<tr>
+    <th>Old People Names</th>
+    <td>{{ $member->old_people_name ?? 'Not Provided' }}</td>
+</tr>
+
+<tr>
+    <th>Boy Names</th>
+    <td>{{ $member->boy_names ?? 'Not Provided' }}</td>
+</tr>
+
+<tr>
+    <th>Girl Names</th>
+    <td>{{ $member->girl_names ?? 'Not Provided' }}</td>
+</tr>
+
+<tr>
+    <th>Guest Name</th>
+    <td>{{ $member->guest_name ?? 'Not Provided' }}</td>
+</tr>
                     </table>
                 </div>
 

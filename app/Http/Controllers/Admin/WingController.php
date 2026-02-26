@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Wing;
 use App\Models\Phase;
+use App\Models\Society;
+
 use Illuminate\Http\Request;
 
 class WingController extends Controller
@@ -18,15 +20,23 @@ class WingController extends Controller
 
     public function create()
     {
-        $phases = Phase::with('society')->get();
-        return view('admin.wing.create', compact('phases'));
+        $societies = Society::all();   // add this
+        $phases = Phase::all();  
+        return view('admin.wing.create', compact('societies','phases'));
+ 
+      //  $phases = Phase::with('society')->get();
+      //  return view('admin.wing.create', compact('phases'));
     }
 
     public function edit(Wing $wing)
-{
-    $phases = Phase::with('society')->get();
-    return view('admin.wing.edit', compact('wing', 'phases'));
-}
+    {
+        $societies = Society::all();   // add this
+        $phases = Phase::all();  
+        return view('admin.wing.edit', compact('wing','societies','phases'));
+ 
+    // $phases = Phase::with('society')->get();
+    // return view('admin.wing.edit', compact('wing', 'phases'));
+    }
 
 public function update(Request $request, Wing $wing)
 {

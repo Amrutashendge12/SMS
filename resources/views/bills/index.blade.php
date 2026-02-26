@@ -11,7 +11,7 @@
         @endif
     </div>
 
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered datatable">
         <thead class="table-dark">
             <tr>
                 <th>ID</th>

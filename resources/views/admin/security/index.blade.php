@@ -20,8 +20,7 @@
 
     <div class="card">
         <div class="card-body table-responsive">
-
-            <table class="table table-bordered table-striped">
+            <table id="securityTable" class="table table-bordered table-striped align-middle">
                 <thead class="table-dark">
                     <tr>
                         <th>#</th>
@@ -109,5 +108,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 </script>
-
+@section('scripts')
+<script>
+$(document).ready(function () {
+    $('#securityTable').DataTable();
+});
+</script>
+@endsection
 @endsection

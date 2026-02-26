@@ -12,8 +12,9 @@
         </a>
     @endif
 
-    <table class="table table-bordered">
-        <thead class="table-dark">
+<table class="table table-bordered datatable">
+
+    <thead class="table-dark">
             <tr>
                 <th>Title</th>
                 <th>Type</th>

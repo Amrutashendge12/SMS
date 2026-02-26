@@ -231,6 +231,45 @@
         </a>
     </div>
 
+<div class="col-md-3 mt-4 mb-4">
+
+    <div class="card shadow-sm border-0 text-center">
+
+        <div class="card-body py-3">
+
+            <h6 class="card-title mb-1">Complaints</h6>
+
+            <p class="text-muted small mb-2">
+                Manage society complaints
+            </p>
+
+            @if(auth()->user()->role == 'admin')
+
+                <a href="{{ route('complaints.index') }}"
+                   class="btn btn-primary btn-sm">
+                    View
+                </a>
+
+            @else
+
+                <a href="{{ route('complaints.index') }}"
+                   class="btn btn-primary btn-sm">
+                    My
+                </a>
+
+                <a href="{{ route('complaints.create') }}"
+                   class="btn btn-success btn-sm">
+                    + Raise
+                </a>
+
+            @endif
+
+        </div>
+
+    </div>
+
+</div>
+
 </div>
 
 <div class="row mt-4">

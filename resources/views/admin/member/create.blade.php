@@ -74,6 +74,42 @@
                 <textarea name="address" class="form-control"></textarea>
             </div>
 
+            {{-- Family Member Names --}}
+
+<div class="col-md-4 mb-3">
+    <label>Father Name</label>
+    <input type="text" name="father_name" class="form-control">
+</div>
+
+<div class="col-md-4 mb-3">
+    <label>Mother Name</label>
+    <input type="text" name="mother_name" class="form-control">
+</div>
+
+<div class="col-md-4 mb-3">
+    <label>Wife Name</label>
+    <input type="text" name="wife_name" class="form-control">
+</div>
+
+<div class="col-md-4 mb-3">
+    <label>Old People Name</label>
+    <input type="text" name="old_people_name" class="form-control" placeholder="Comma separated">
+</div>
+
+<div class="col-md-4 mb-3">
+    <label>Boy Names</label>
+    <input type="text" name="boy_names" class="form-control" placeholder="Comma separated">
+</div>
+
+<div class="col-md-4 mb-3">
+    <label>Girl Names</label>
+    <input type="text" name="girl_names" class="form-control" placeholder="Comma separated">
+</div>
+
+<div class="col-md-4 mb-3">
+    <label>Guest Name (If staying)</label>
+    <input type="text" name="guest_name" class="form-control">
+</div>
             {{-- Flat Assign --}}
             <div class="col-md-12 mb-3">
                 <label>Select Flat</label>

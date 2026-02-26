@@ -8,8 +8,7 @@
     <a href="{{ route('admin.amenities.create') }}" class="btn btn-primary mb-3">
         Add Amenity
     </a>
-
-    <table class="table table-bordered">
+    <table id="securityTable" class="table table-bordered table-striped align-middle">
         <thead class="table-dark">
             <tr>
                 <th>Name</th>
@@ -54,4 +53,12 @@
     </table>
 
 </div>
+@section('scripts')
+<script>
+$(document).ready(function () {
+    $('#securityTable').DataTable();
+});
+</script>
+@endsection
+
 @endsection

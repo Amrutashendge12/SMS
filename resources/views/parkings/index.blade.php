@@ -13,8 +13,9 @@
     @endif
 
 
-    <table class="table table-bordered table-striped">
-        <thead class="table-dark">
+<table class="table table-bordered datatable">
+
+    <thead class="table-dark">
             <tr>
                 <th>Vehicle No</th>
                 <th>Owner</th>
@@ -23,7 +24,6 @@
                 <th>Status</th>
                 <th>Entry Time</th>
                 <th>Exit Time</th>
-                <th>Charges</th>
                 <th width="200">Action</th>
             </tr>
         </thead>
@@ -47,13 +47,6 @@
                 <td>{{ $p->entry_time ? date('d M Y h:i A', strtotime($p->entry_time)) : '-' }}</td>
                 <td>{{ $p->exit_time ? date('d M Y h:i A', strtotime($p->exit_time)) : '-' }}</td>
 
-                <td>
-                    @if($p->charges)
-                        <span class="text-success fw-bold">₹ {{ $p->charges }}</span>
-                    @else
-                        —
-                    @endif
-                </td>
 
                 <td>
 
@@ -70,16 +63,16 @@
 
 
                     {{-- ADMIN + SECURITY EXIT --}}
-                    @if(($p->status == 'Parked') &&
-                       (auth()->user()->role == 'admin' || auth()->user()->role == 'security'))
+                    @if($p->status == 'Parked' &&
+   in_array(auth()->user()->role, ['admin','security','owner']))
 
-                        <a href="{{ route('admin.parkings.exit',$p->id) }}"
-                           onclick="return confirm('Confirm vehicle exit?')"
-                           class="btn btn-warning btn-sm">
-                            Exit
-                        </a>
+    <a href="{{ route('admin.parkings.exit',$p->id) }}"
+       onclick="return confirm('Confirm vehicle exit?')"
+       class="btn btn-warning btn-sm">
+        Exit
+    </a>
 
-                    @endif
+@endif
 
                 </td>
             </tr>

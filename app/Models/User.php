@@ -31,6 +31,13 @@ class User extends Authenticatable
         'occupation',
         'address',
         'profile_photo',
+        'father_name',
+        'mother_name',
+        'wife_name',
+        'old_people_name',
+        'boy_names',
+        'girl_names',
+        'guest_name',
     ];
 
     /**

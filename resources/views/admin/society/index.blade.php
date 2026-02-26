@@ -8,8 +8,8 @@
     + Add Society
 </a>
 
-<table class="table table-bordered bg-white">
-    <thead class="table-dark">
+<table id="securityTable" class="table table-bordered table-striped align-middle">
+       <thead class="table-dark">
         <tr>
             <th>#</th>
             <th>Society Name</th>
@@ -30,5 +30,12 @@
         @endforeach
     </tbody>
 </table>
+@section('scripts')
+<script>
+$(document).ready(function () {
+    $('#securityTable').DataTable();
+});
+</script>
+@endsection
 
 @endsection

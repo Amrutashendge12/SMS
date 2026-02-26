@@ -16,7 +16,7 @@
     <div class="card">
         <div class="card-body">
 
-            <table class="table table-bordered text-center">
+            <table class="table table-bordered datatable">
 
                 <thead class="table-dark">
                     <tr>

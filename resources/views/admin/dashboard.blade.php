@@ -248,6 +248,34 @@
     </a>
 </div>
 
+<div class="col-md-3 mb-4">
+    <div class="card shadow-sm border-0 text-center h-100">
+
+        <div class="card-body d-flex flex-column justify-content-center">
+
+            <h5 class="card-title mb-2">Complaints</h5>
+
+            <p class="text-muted small mb-3">
+                Raise and manage society complaints
+            </p>
+
+            <a href="{{ route('complaints.index') }}"
+               class="btn btn-primary btn-sm">
+                View Complaints
+            </a>
+
+            @if(auth()->user()->role != 'admin')
+                <a href="{{ route('complaints.create') }}"
+                   class="btn btn-success btn-sm mt-2">
+                    + Raise Complaint
+                </a>
+            @endif
+
+        </div>
+
+    </div>
+</div>
+
 <div class="row mt-4">
     <div class="col-md-6">
         <div class="card shadow">
@@ -275,7 +303,7 @@
 </div>
 
 <div class="row mt-4">
-    <div class="col-md-8">   <!-- ⭐ width kami keli -->
+    <div class="col-md-6">   <!-- ⭐ width kami keli -->
         <div class="card shadow">
             <div class="card-header bg-warning text-white">
                 <h5>Maintenance Monthly Graph</h5>

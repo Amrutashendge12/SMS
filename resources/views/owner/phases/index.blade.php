@@ -19,7 +19,8 @@
         <div class="card-body">
 
             <div class="table-responsive">
-                <table class="table table-bordered table-striped align-middle">
+                <table class="table table-bordered datatable">
+
                     <thead class="table-dark">
                         <tr>
                             <th>#</th>

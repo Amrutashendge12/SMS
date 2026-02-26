@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ===== Professional Sidebar ===== */
+
+.sidebar {
+    background: linear-gradient(180deg, #1e293b, #0f172a);
+    border-right: 1px solid #2d3748;
+}
+
+.sidebar a {
+    display: block;
+    padding: 8px 12px;
+    color: #cbd5e1;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.sidebar a:hover {
+    background: #2563eb;
+    color: white;
+}
+
+.sidebar summary {
+    cursor: pointer;
+    padding: 8px 12px;
+    font-weight: 600;
+    color: #e2e8f0;
+}
+
+.sidebar details[open] summary {
+    color: #60a5fa;
+}
+
+.sidebar strong {
+    font-size: 18px;
+    color: white;
+}
+
+.sidebar hr {
+    border-color: #334155;
+}
