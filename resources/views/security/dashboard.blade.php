@@ -162,7 +162,7 @@
 
 <div class="col-md-3 mt-3">
     <a href="{{ route('security.parkings.index') }}" class="text-decoration-none">
-        <div class="card bg-primary text-white">
+        <div class="card shadow-sm border-success h-100">
             <div class="card-body">
                 <h5>Total Vehicles</h5>
                 <h2>{{ $totalParking }}</h2>
@@ -172,7 +172,7 @@
 </div>
 
 <div class="col-md-3 mt-3">
-        <div class="card bg-success text-white">
+        <div class="card shadow-sm border-success h-100">
             <div class="card-body">
                 <h5>Currently Parked</h5>
                 <h2>{{ $parkedVehicles }}</h2>
@@ -181,7 +181,7 @@
 </div>
 
 <div class="col-md-3 mt-3">
-        <div class="card bg-danger text-white">
+        <div class="card shadow-sm border-success h-80">
             <div class="card-body">
                 <h5>Exited Vehicles</h5>
                 <h2>{{ $exitedVehicles }}</h2>

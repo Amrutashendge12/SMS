@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\AttendanceReportController;
 use App\Http\Controllers\Admin\AmenityBookingController;
 use App\Http\Controllers\Admin\AmenityBookingController as AdminBookingController;
 use App\Http\Controllers\Admin\AmenityController;
+use App\Http\Controllers\Admin\ReportController;
 
 // Owner
 use App\Http\Controllers\Owner\SocietyController as OwnerSocietyController;
@@ -109,6 +110,13 @@ Route::middleware(['auth','role:admin'])
        
         Route::resource('parkings', ParkingController::class);
 
+         Route::get('/reports', [ReportController::class, 'index'])
+        ->name('reports');
+
+        Route::get('/reports/pdf', [ReportController::class, 'downloadPdf'])
+            ->name('reports.pdf')
+            ->middleware(['auth','role:admin']);
+
         Route::get('parking-exit/{id}', [ParkingController::class,'exit'])
             ->name('parkings.exit');
 
@@ -148,6 +156,7 @@ Route::middleware(['auth','role:admin'])
         Route::get('/attendance', [AttendanceController::class, 'index'])
             ->name('attendance.index');
 
+       
 
 });
 

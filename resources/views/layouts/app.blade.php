@@ -137,22 +137,18 @@
 
                  <details class="mb-2">
                     <summary>Society</summary>
-                    <a href="{{ route('owner.societies.index') }}">View Societies</a>
                 </details>
 
                 <details class="mb-2">
                     <summary>Phase</summary>
-                        <a href="{{ route('owner.phases.index') }}">View Phases</a>
                 </details>
 
                 <details class="mb-2">
                     <summary>Wing</summary>
-                        <a href="{{ route('owner.wings.index') }}">View Wings</a>
                 </details>
 
                 <details class="mb-2">
                     <summary>Flat</summary>
-                    <a href="{{ route('owner.flats.index') }}">View Flats</a>
                 </details>
 
     
@@ -384,6 +380,12 @@
 
 </details>
 
+@if(auth()->user()->role === 'admin')
+<details class="mb-2">
+    <summary>Reports</summary>
+    <a href="{{ route('admin.reports') }}">Reports</a>
+</details>
+@endif
 
 </div>
 

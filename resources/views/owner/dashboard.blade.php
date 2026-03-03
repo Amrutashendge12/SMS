@@ -9,50 +9,42 @@
 
     <!-- Total Societies -->
     <div class="col-md-3 mb-3">
-        <a href="{{ route('owner.societies.index') }}" class="text-decoration-none">
             <div class="card bg-success text-white">
                 <div class="card-body">
                     <h5>Total Societies</h5>
                     <h2>{{ $societiesCount }}</h2>
                 </div>
             </div>
-        </a>
     </div>
 
     <!-- Total Phases -->
     <div class="col-md-3 mb-3">
-        <a href="{{ route('owner.phases.index') }}" class="text-decoration-none">
             <div class="card bg-info text-white">
                 <div class="card-body">
                     <h5>Total Phases</h5>
                     <h2>{{ $phasesCount }}</h2>
                 </div>
             </div>
-        </a>
     </div>
 
     <!-- Total Wings -->
     <div class="col-md-3 mb-3">
-        <a href="{{ route('owner.wings.index') }}" class="text-decoration-none">
             <div class="card bg-warning text-dark">
                 <div class="card-body">
                     <h5>Total Wings</h5>
                     <h2>{{ $wingsCount }}</h2>
                 </div>
             </div>
-        </a>
     </div>
 
     <!-- Total Flats -->
     <div class="col-md-3 mb-3">
-        <a href="{{ route('owner.flats.index') }}" class="text-decoration-none">
             <div class="card bg-primary text-white">
                 <div class="card-body">
                     <h5>Total Flats</h5>
                     <h2>{{ $flatsCount }}</h2>
                 </div>
             </div>
-        </a>
     </div>
 
 
@@ -299,7 +291,7 @@
 </div>
 
 <div class="row mt-4">
-    <div class="col-md-8">   <!-- ⭐ width kami keli -->
+    <div class="col-md-6">   <!-- ⭐ width kami keli -->
         <div class="card shadow">
             <div class="card-header bg-warning text-white">
                 <h5>Maintenance Monthly Graph</h5>

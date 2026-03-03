@@ -1,47 +1,113 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | Society Management</title>
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+
+<body class="min-h-screen flex">
+
+<!-- ================= LEFT SIDE IMAGE ================= -->
+<div class="hidden md:flex w-1/2 bg-gradient-to-br from-blue-600 to-indigo-700 items-center justify-center p-10 text-white">
+
+    <div class="text-center">
+        <h1 class="text-5xl font-bold mb-6">🏢 Society Management</h1>
+        <p class="text-lg opacity-90">
+            Manage residents, maintenance, complaints & security
+            easily from one smart platform.
+        </p>
+            <img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4"
+     class="mt-10 rounded-2xl shadow-2xl w-full max-w-xl h-[420px] object-cover border-4 border-white/20">
+        
+    </div>
+
+</div>
+
+
+<!-- ================= LOGIN FORM ================= -->
+<div class="flex w-full md:w-1/2 items-center justify-center bg-gray-100">
+
+    <div class="bg-white p-10 rounded-2xl shadow-2xl w-full max-w-md">
+
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-800">Welcome Back 👋</h2>
+            <p class="text-gray-500 text-sm mt-2">
+                Login to continue managing your society
+            </p>
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+            <!-- Email -->
+            <div class="mb-5">
+                <label class="block text-gray-600 text-sm mb-2">Email</label>
+                <input type="email" name="email" required
+                    class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 outline-none">
+            </div>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+            <!-- Password -->
+            <div class="mb-6 relative">
+                <label class="block text-gray-600 text-sm mb-2">Password</label>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
+                <input id="password" type="password" name="password" required
+                    class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 outline-none">
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
+                <!-- Eye Icon -->
+                <span onclick="togglePassword()"
+                      class="absolute right-4 top-10 cursor-pointer text-gray-500">
+                    👁
+                </span>
+            </div>
+
+            <!-- Remember -->
+            <div class="flex justify-between items-center mb-6 text-sm">
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="remember">
+                    Remember me
+                </label>
+
+                <a href="{{ route('password.request') }}"
+                   class="text-blue-600 hover:underline">
+                    Forgot password?
                 </a>
-            @endif
+            </div>
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+            <!-- Button -->
+            <button type="submit"
+                class="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105">
+                Login
+            </button>
+        </form>
+
+        <!-- Register -->
+        <p class="text-center text-gray-500 text-sm mt-6">
+            Don't have an account?
+            <a href="{{ route('register') }}" class="text-blue-600 font-semibold">
+                Register
+            </a>
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ================= PASSWORD TOGGLE SCRIPT ================= -->
+<script>
+function togglePassword() {
+    const pass = document.getElementById("password");
+    pass.type = pass.type === "password" ? "text" : "password";
+}
+</script>
+
+</body>
+</html>
